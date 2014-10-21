@@ -1,7 +1,7 @@
-Cassandra instance on OpenShift
-===============================
+Cassandra instance as a cluster node on OpenShift
+=================================================
 
-This is a simple Red Hat OpenShift example that demonstrates how to deploy a Cassandra instance as an OpenShift cartridge.  
+This is a simple Red Hat OpenShift example that demonstrates how to deploy a Cassandra node in a cluster as an OpenShift cartridge.  
 
 
 Running on OpenShift
@@ -9,7 +9,7 @@ Running on OpenShift
 
 Create an account at https://www.openshift.com
 
-Create the 1st cassandra server instance cass1
+Create the 1st cassandra instance cass1
 
     rhc app create cass1 diy
 
@@ -30,7 +30,7 @@ Find the IP address of cass1 instance
     ssh <to the gear>
     env | grep $OPENSHIFT_DIY_IP
 
-Create the 2nd cassandra server instance cass2
+Create the 2nd cassandra instance cass2 in a cluster with the 1st instance cass1
 
     rhc app create cass2 diy
     
