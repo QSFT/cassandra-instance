@@ -36,7 +36,7 @@ Create the 2nd cassandra instance cass2 in a cluster with the 1st instance cass1
     
 Set the cass1 IP for cass2
 
-    rhc env set CASSANDRA_NODE=<OPENSHIFT_DIY_IP of cass1> —app cass2
+    rhc env set CASSANDRA_NODE_IP=<OPENSHIFT_DIY_IP of cass1> —app cass2
 
 Add this upstream repo
 

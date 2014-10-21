@@ -4,7 +4,7 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-SEEDS="$CASSANDRA_NODE,$OPENSHIFT_DIY_IP"
+SEEDS="$CASSANDRA_NODE_IP,$OPENSHIFT_DIY_IP"
 
 set -x
 if [ -d $OPENSHIFT_DATA_DIR/cassandra ]
