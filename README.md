@@ -63,10 +63,10 @@ Test
     use demo;
     create table names ( id int primary key, name text ); insert into names (id,name) values (1,'trad');
 
-  on cass2, verify replication by
+  on cass2, verify cluster replication by
 
     cd app-root/data/cassandra/bin/
-   ./cqlsh $OPENSHIFT_DIY_IP 19160
+    ./cqlsh $OPENSHIFT_DIY_IP 19160
 
     use demo;
     select * from names;
