@@ -24,9 +24,25 @@ Then push the repo upstream
 
     git push
 
-Create the 1st cassandra server instance cass2
+Find the IP address of cass1 instance
+   
+    rhc app show
+    ssh <to the gear>
+    env | grep $OPENSHIFT_DIY_IP
+
+Create the 2nd cassandra server instance cass2
 
     rhc app create cass2 diy
+
+Find the IP address of cass2 instance
+   
+    rhc app show
+    ssh <to the gear>
+    env | grep $OPENSHIFT_DIY_IP
+    
+Set the cass1 IP for cass2
+
+    rhc env set CASSANDRA_NODE=<OPENSHIFT_DIY_IP of cass1>, <OPENSHIFT_DIY_IP of cass2> —app cass2
 
 Add this upstream repo
 
