@@ -33,16 +33,10 @@ Find the IP address of cass1 instance
 Create the 2nd cassandra server instance cass2
 
     rhc app create cass2 diy
-
-Find the IP address of cass2 instance
-   
-    rhc app show
-    ssh <to the gear>
-    env | grep $OPENSHIFT_DIY_IP
     
 Set the cass1 IP for cass2
 
-    rhc env set CASSANDRA_NODE=<OPENSHIFT_DIY_IP of cass1>, <OPENSHIFT_DIY_IP of cass2> —app cass2
+    rhc env set CASSANDRA_NODE=<OPENSHIFT_DIY_IP of cass1> —app cass2
 
 Add this upstream repo
 
@@ -58,7 +52,26 @@ Then push the repo upstream
 
 Test
 
-    ssh
+    ssh to each server
+    
+  on cass1
+
+    cd app-root/data/cassandra/bin/
+    ./cqlsh $OPENSHIFT_DIY_IP 19160
+
+    create keyspace demo with replication = {'class':'SimpleStrategy', 'replication_factor':2};
+    use demo;
+    create table names ( id int primary key, name text ); insert into names (id,name) values (1,'trad');
+
+  on cass2
+    cd app-root/data/cassandra/bin/
+   ./cqlsh $OPENSHIFT_DIY_IP 19160
+
+    use demo;
+    select * from names;
+    
+
+	
     
 
     

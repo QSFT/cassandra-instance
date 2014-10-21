@@ -9,5 +9,3 @@ cd $OPENSHIFT_DATA_DIR/cassandra
 bin/cassandra
 export CQLSH_HOST=$OPENSHIFT_DIY_IP
 export CQLSH_PORT=19160
-
-echo creating Cassandra instance to listen at $OPENSHIFT_DIY_IP, with seeds: $SEEDS
