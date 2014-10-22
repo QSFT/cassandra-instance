@@ -36,4 +36,5 @@ else
 	#sed -i -e 's/# JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"/JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname='$OPENSHIFT_DIY_IP'"/g' cassandra-env.sh
 	sed -ig 's,${max_sensible_yg_in_mb}M,256M,' cassandra-env.sh
 	sed -ig 's,${desired_yg_in_mb}M,256M,' cassandra-env.sh
+	sed -ig '/jmxremote/s/^/#/' cassandra-env.sh
 fi
