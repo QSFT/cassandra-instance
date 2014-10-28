@@ -36,11 +36,16 @@ Create the 2nd cassandra instance cass2 in a cluster with the 1st instance cass1
     
 Set the cass1 IP for cass2
 
-    rhc env set CASSANDRA_NODE_IP=<OPENSHIFT_DIY_IP of cass1> —-app cass2
+    cd cass2
+
+    rhc env set CASSANDRA_NODE_IP=<OPENSHIFT_DIY_IP of cass1>
+
+Check the env is set
+
+    rhc env-list
 
 Add this upstream repo
 
-    cd cass2
     git remote add upstream https://github.com/dell-oss/cassandra-instance
     git pull -s recursive -X theirs upstream master
 
