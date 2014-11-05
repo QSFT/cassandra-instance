@@ -35,6 +35,14 @@ Create the 2nd cassandra instance cass2 in a cluster with the 1st instance cass1
 
     cd ..
     rhc app create cass2 diy
+
+Check if the private IP of 1st cassandra instance can be reached from cass2 
+   
+    ssh <to the gear of cass2>
+    curl http://<OPENSHIFT_DIY_IP of cass1>:19042
+    
+    (expect to see the message other than “curl: (7) couldn't connect to host”)
+    if you get that message, then you need to retry the step “Create the 2nd cassandra instance” until Openshift gives you the environment that can connect to the 1st instance.
     
 Set the cass1 IP for cass2
 
@@ -45,14 +53,6 @@ Set the cass1 IP for cass2
 Check the env is set
 
     rhc env-list
-
-Check if the private IP of 1st cassandra instance can be reached from cass2 
-   
-    ssh <to the gear of cass1>
-    curl http://<OPENSHIFT_DIY_IP of cass1>:19042
-    
-    (expect to see the message other than “curl: (7) couldn't connect to host”)
-    if you get that message, then you need to retry the step “Create the 2nd cassandra instance” until Openshift gives you the environment that can connect to the 1st instance.
 
 
 Add this upstream repo
