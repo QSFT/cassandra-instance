@@ -3,8 +3,13 @@
 # script. The application will work only if it binds to
 # $OPENSHIFT_INTERNAL_IP:8080
 
+SEEDS="$CASSANDRA_NODE_IP,$OPENSHIFT_DIY_IP"
+
 set -x
 
+cd $OPENSHIFT_DATA_DIR/cassandra/conf
+sed -ig 's/- seeds: \"127.0.0.1\"/- seeds: \"'$SEEDS'\"/' cassandra.yaml
+	
 cd $OPENSHIFT_DATA_DIR/cassandra
 bin/cassandra
 export CQLSH_HOST=$OPENSHIFT_DIY_IP
